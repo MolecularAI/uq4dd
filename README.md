@@ -20,13 +20,13 @@ This package provides the full methodology used in a collection of publication f
 
 ## Installation
 
-Main requirements are,
+The main requirements are,
 - Python >= 3.8
 - CUDA >= 11.7
 - PyTorch >= 2.0
 - Lightning >= 2.0
 
-Additional packages inlcude sklearn, hydra, RDKit, PyTDC.
+Additional packages include sklearn, hydra, RDKit, PyTDC.
 
 Logging is supported with [Weights & Biases](https://wandb.ai/site).
 
@@ -39,11 +39,11 @@ $ conda env create -f environment.yaml
 The code structure is based on the [lightning-hydra-template](https://github.com/ashleve/lightning-hydra-template/).
 
 ## Data
-While the main contributions of this work requires proprietary internal pharmaceutical data with temporal information, standard deviation of experiments, and censored labels, the full source code is made available on public datasets from the [Therapeutics Data Commons](https://tdcommons.ai/). Specifically, we provide examples for the random splits of the following ADME tasks in
+While the main contributions of this work require proprietary internal pharmaceutical data with temporal information, standard deviation of experiments, and censored labels, the full source code is made available on public datasets from the [Therapeutics Data Commons](https://tdcommons.ai/). Specifically, we provide examples for the random splits of the following ADME tasks in
 
 **Regression**
-- Intrinstic Clearance Hepatocyte (AstraZeneca), including 1,020 drug compounds. 
-- Intrinstic Clearance Microsome (AstraZeneca), including 1,102 drug compounds. 
+- Intrinsic Clearance Hepatocyte (AstraZeneca), including 1,020 drug compounds. 
+- Intrinsic Clearance Microsome (AstraZeneca), including 1,102 drug compounds. 
 - Plasma Protein Binding Rate (AstraZeneca), including 1,614 drug compounds.
 - Lipophilicity (AstraZeneca), including 4,200 drug compounds.
 - Solubility (AqSolDB), including 9,982 drug compounds.
@@ -56,19 +56,19 @@ However, the framework can easily be extended to all other single-instance predi
 
 ## Usage
 
-Single instance drug-target interactions and molecular properties can be predicted together with the quantified uncertainty using ensemble-based, Gaussian, and Bayesian approaches seen in the Figure below.
+Single-instance drug-target interactions and molecular properties can be predicted together with the quantified uncertainty using ensemble-based, Gaussian, and Bayesian approaches seen in the Figure below.
 
-![plot](https://github.com/azu-biopharmaceuticals-rd/uq4dd/blob/main/illustrations/uq_method.png)
+![plot](https://github.com/MolecularAI/uq4dd/blob/main/illustrations/uq_method.png)
 
 ### Encoders
-Currently, the supported encoders for drugs is limited to RDKit ECFP, with optional radius (default=2) and size (default=1024). However, we strongly encourage the use of state-of-the-art pre-trained encoders such as [CDDD](https://github.com/jrwnter/cddd) and [MolBERT](https://github.com/BenevolentAI/MolBERT).
+Currently, the supported encoder for drugs is limited to RDKit ECFP, with optional radius (default=2) and size (default=1024). However, we strongly encourage the use of state-of-the-art pre-trained encoders such as [CDDD](https://github.com/jrwnter/cddd) and [MolBERT](https://github.com/BenevolentAI/MolBERT).
 
 ### Learning frameworks
 We provide three learning frameworks with uncertainty quantification, (Baselines) a wrapper around [scikit-learn](https://scikit-learn.org/stable/) models such as Random Forest (RF), (Deep Learning) regular fully-connected neural networks, and (Bayesian Learning) an approximation of a Bayesian neural network using Bayes by Backprop (Blundell, et al., 2015). 
 
 **Baselines**
 
-Primarily, the RF from scikit-learn can be used as a baseline of an ensemble-based approach where the variance over the decision trees is takes as an estimate of epistemic uncertainty. Furthermore, the code can be extended to other models from scikit-learn, such as Support Vector Machine (SVM) or Gaussian Process (GP), or to the XGBoost model from xgboost. Train and evaluate the baseline models using 
+Primarily, the RF from scikit-learn can be used as a baseline of an ensemble-based approach where the variance over the decision trees is taken as an estimate of epistemic uncertainty. Furthermore, the code can be extended to other models from scikit-learn, such as Support Vector Machine (SVM) or Gaussian Process (GP), or to the XGBoost model from xgboost. Train and evaluate the baseline models using 
 
 ```bash
 $ python uq4dd/train.py model=rf db=$DATASET
@@ -78,7 +78,7 @@ where $DATASET is the name of a config file for the given dataset, e.g. `lipo` f
 
 **Deep Learning**
 
-The framework for developing fully-connected neural networks with abilities to quantify uncertainty supports the following three base esitmators,
+The framework for developing fully connected neural networks with abilities to quantify uncertainty supports the following three base estimators,
 
 - Single output multi-layer perceptron (MLP), `model=mlp`,
 - Mean-Variance Estimator (MVE), `model=mve`,
@@ -94,7 +94,7 @@ The respective pre-trained base estimators can then be used to evaluate the foll
 
 - Ensemble (Lakshminarayanan et al., 2017), an ensemble of *k* MLPs where the mean prediction is taken as the final estimated property and the variance of the predictions is taken as an estimate of the epistemic uncertainty, `model=ensemble`.
 - MC-Dropout (Gal and Ghahramani, 2016), an ensemble of sampled predictions from a single MLP with dropout applied during inference such that the mean prediction is taken as the final estimated property and the variance of the predictions is taken as an estimate of the epistemic uncertainty, `model=mc`.
-- Gaussian (Nix and Weigend, 1994), a single MVE that predicts the property and an estimate of the aleatoric uncertainty directly, `model=mve`.
+- Gaussian (Nix and Weigend, 1994), a single MVE that directly predicts the property and an estimate of the aleatoric uncertainty, `model=mve`.
 - Gaussian Ensemble (Lakshminarayanan et al., 2017), an ensemble of *k* MVEs such that the mean prediction is taken as the final estimated property, the variance of the predictions is taken as an estimate of the epistemic uncertainty, and the mean predicted aleatoric uncertainty estimates is taken as the final aleatoric uncertainty, `model=gmm`.
 - Evidential (Amini et al., 2020), a single evidential model trained to predict the four parameters, $\gamma, \nu, \alpha, \beta$, such that the predicted property is $\gamma$, the aleatoric uncertainty estimate is $\frac{\beta}{\nu(\alpha - 1)}$, and the epistemic uncertainty estimate is $\frac{\beta}{\alpha - 1}$, `model=evidential`.
 
@@ -106,7 +106,7 @@ $ python uq4dd/eval.py model=$MODEL db=$DATASET
 
 **Bayesian Learning**
 
-In the Bayseian framework, an approximation of a Bayesian Neural Network can be trained using Bayes by Backprop (Blundell, et al., 2015) and evaluated with
+In the Bayesian framework, an approximation of a Bayesian Neural Network can be trained using Bayes by Backprop (Blundell, et al., 2015) and evaluated with
 
 ```bash
 $ python uq4dd/pretrain.py model=bnn_train db=$DATASET
@@ -120,7 +120,7 @@ Probability calibration can be achieved with Platt-scaling (Platt, 1999) and Ven
 For regression applications we support re-calibration of uncertainty estimates using a fitted linear error-based calibration (Rasmussen et al., 2023). Apply the re-calibration approach by specifying `model.recalibrate=uq_linear` in any of the above scripts.
 
 ### Evaluation
-We evaluate performance using the respective loss functions, as well as any classification metrics, e.g. Accuracy, AUC. Probability calibration is evaluated with ECE, ACE, and Brier-score. Uncertainty Quantification is related to performance in the Expected Noramlized Calibration Error (ENCE) and in the Gaussian Negative Log Likelihood (NLL). 
+We evaluate performance using the respective loss functions, as well as any classification metrics, e.g. Accuracy, AUC. Probability calibration is evaluated with ECE, ACE, and Brier-score. Uncertainty Quantification is related to performance in the Expected Noramlized Calibration Error (ENCE) and the Gaussian Negative Log Likelihood (NLL). 
 
 ### Logging
 
@@ -136,7 +136,7 @@ $ python uq4dd/sweep.py model=$MODEL db=$DATASET
 
 ## License
 
-The software is licensed under the Apache 2.0 license (see [LICENSE](https://github.com/azu-biopharmaceuticals-rd/uq4dd/blob/main/LICENSE)), and is free and provided as-is.
+The software is licensed under the Apache 2.0 license (see [LICENSE](https://github.com/azu-biopharmaceuticals-rd/uq4dd/blob/main/LICENSE)) and is free and provided as-is.
 
 ## Contributors
 - [Emma Svensson](https://github.com/emmas96)
@@ -180,7 +180,7 @@ research and innovation programme under the Marie Skłodowska-Curie
 Actions, grant agreement “Advanced machine learning for Innovative Drug
 Discovery (AIDD)” No 956832”. [Homepage](https://ai-dd.eu/).
 
-![plot](https://github.com/azu-biopharmaceuticals-rd/uq4dd/blob/main/illustrations/aidd.png)
+![plot](https://github.com/MolecularAI/uq4dd/blob/main/illustrations/aidd.png)
 
 ## References
 Amini, A., et al. "Deep evidential regression." Advances in Neural Information Processing Systems 33 (2020): 14927-14937.
