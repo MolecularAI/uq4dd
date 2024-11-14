@@ -1,0 +1,15 @@
+_target_: uq4dd.model.predictor.rf.RF
+objective: ${model.objective}
+uncertainty: ${model.uncertainty}
+
+n_estimators: 250         
+min_samples_split: 0.5          #tuned in regression 
+min_samples_leaf: 25            #tuned in regression
+max_depth: 1                 #tuned in classification             
+ccp_alpha: 0.0                  # non-negative float
+
+name: RF
+oob_score: True
+verbose: 1 
+n_jobs: -1
+

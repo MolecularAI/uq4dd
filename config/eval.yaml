@@ -1,0 +1,31 @@
+
+defaults: 
+  - _self_                
+  - hydra: default.yaml   # Ignore
+  - paths: default.yaml   # Ignore
+  - model: mlp.yaml       # Model configs, specify with argument e.g. model=mlp or model=ensemble
+  - db: lipo.yaml         # Data configs, specify with argument e.g. db=lipo for regression or db=cyp3a4 for classification
+  - trainer: torch.yaml   # Torch trainer configs for MLPs
+  - logger: null          # Specify with argument e.g. logger=emma
+  - callbacks: base.yaml  # Use base or default callbacks depending on if metrics should be computed automatically or not
+
+# Information
+name: ${db.dataset}_${now:%Y-%m-%d}_${now:%H-%M-%S}
+project: UQ4DD
+version: 0.0.1
+description: "Uncertainty quantification for drug discovery."
+
+# Training
+seed: null
+train: False          # Trining is not supported in eval mode
+test: True            # Evaluate on test set, using best model weights from pre-trained models
+cv: False
+n_experiments: 10      # For evaluation, specify the number of repeated experiments to run
+ckpt_path: null
+ckpt_metric: loss
+debug: False
+
+batch_size: 256        # Batch size for training redundant for eval mode
+batch_size_eval: -1   # Eval batch size has to be full (-1) for metrics computation
+n_train_batches: null   # Gets infered after the datamodule is created
+

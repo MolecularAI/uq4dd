@@ -1,0 +1,47 @@
+
+model_checkpoint:
+  _target_: lightning.pytorch.callbacks.ModelCheckpoint
+  dirpath: ${paths.output_dir}/checkpoints
+  filename: "epoch_{epoch:03d}_{valid/loss:.2f}"
+  monitor: "valid/loss"   
+  mode: "min"
+  save_last: True
+  save_top_k: 5
+  auto_insert_metric_name: False
+
+early_stopping:
+  _target_: lightning.pytorch.callbacks.EarlyStopping
+  monitor: "valid/loss"
+  patience: 50
+  mode: "min"
+
+model_summary:
+  _target_: lightning.pytorch.callbacks.RichModelSummary
+  max_depth: -1
+
+rich_progress_bar:
+  _target_: lightning.pytorch.callbacks.RichProgressBar
+
+watch_model:
+  _target_: uq4dd.utils.wandb.WatchModel
+  log: 'all'
+  log_freq: 200
+  log_graph: False
+
+classification_metrics: 
+  _target_: uq4dd.utils.callbacks.ClassificationMetrics
+  threshold: ${db.threshold}
+  objective: ${model.objective}
+  probabilistic_labels: ${db.probabilistic_labels}
+
+regression_metrics:
+  _target_: uq4dd.utils.callbacks.RegressionMetrics
+  objective: ${model.objective}
+  censored: ${db.censored}
+
+uncertainty_metrics:
+  _target_: uq4dd.utils.callbacks.UncertaintyMetrics
+  objective: ${model.objective}
+  censored: ${db.censored}
+  uncertainty: ${model.uncertainty}
+

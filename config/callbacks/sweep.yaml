@@ -1,0 +1,10 @@
+
+early_stopping:
+  _target_: lightning.pytorch.callbacks.EarlyStopping
+  monitor: "valid/loss"
+  patience: 50
+  mode: "min"
+
+rich_progress_bar:
+  _target_: lightning.pytorch.callbacks.RichProgressBar
+

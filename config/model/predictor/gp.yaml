@@ -1,0 +1,7 @@
+# Depricated! Need updating according to RF
+
+_target_: uq4dd.model.predictor.gp.GP
+objective: ${model.objective}
+n_restarts: 10
+rbf_l: 1.0
+n_jobs: -1

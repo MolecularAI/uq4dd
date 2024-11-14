@@ -1,0 +1,6 @@
+_target_: uq_dti.datamodule.utils.descriptors.HandcraftedDescriptors
+
+method: ECFP
+radius: 2
+fpSize: 1024
+

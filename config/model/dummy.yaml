@@ -1,0 +1,16 @@
+
+_target_: uq4dd.model.dummy.DummyDTI
+n_predictors: 1
+n_experiments: ${n_experiments}
+uncertainty: 'none' 
+recalibrate: 'none'
+save_path: True
+ckpt_path: null
+
+drug_features: ${db.descriptors.fpSize}
+censored: ${db.censored}
+objective: ${db.objective}
+
+predictor: 'train'
+verbose: true
+

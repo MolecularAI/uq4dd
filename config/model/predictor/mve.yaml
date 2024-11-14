@@ -1,0 +1,10 @@
+_target_: uq4dd.model.predictor.mlp.MLP
+
+input_dim: ${model.drug_features}
+hidden_dim: 512
+output_dim: 2
+layers: 4
+decreasing: False
+dropout: 0.5
+
+name: MVE

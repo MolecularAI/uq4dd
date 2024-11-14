@@ -1,0 +1,11 @@
+_target_: uq4dd.model.predictor.bnn.BNN
+
+input_dim: ${model.drug_features}
+hidden_dim: 512
+output_dim: 1
+layers: 2
+prior_mu: 0 
+prior_rho: 0
+prior_sig: 0.1
+
+name: BNN

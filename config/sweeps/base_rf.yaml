@@ -1,0 +1,42 @@
+program: uq4dd/train.py
+project: UQ4DD_Sweeps
+name: base_rf
+method: grid
+metric:
+  goal: minimize
+  name: best_valid/loss
+parameters:
+  model.uncertainty: 
+    value: 'none' 
+  model.recalibrate: 
+    value: 'none'
+  trainer.min_epochs: 
+    value: 1
+  trainer.max_epochs: 
+    value: 1
+  trainer.accelerator: 
+    value: 'cpu'
+  trainer.num_sanity_val_steps:
+    value: 0
+  trainer.log_every_n_steps: 
+    value: 1
+  db.batch_size: 
+    value: -1
+  db.censored: 
+    value: False
+  db.dataset: 
+    value: 'Lipophilicity_AstraZeneca'
+  db.objective: 
+    value: 'regression'
+  model.predictor.n_estimators: 
+    values: [50, 100, 250, 500, 1000]
+  model.predictor.min_samples_split: 
+    values: [2, 10, 0.25, 0.5, 0.75]
+  model.predictor.min_samples_leaf:
+    values: [1, 25, 50, 100, 250, 500] 
+
+command:
+  - python
+  - ${program}
+  - ${args_no_hyphens}
+

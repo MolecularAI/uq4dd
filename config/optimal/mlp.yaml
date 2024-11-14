@@ -1,0 +1,8 @@
+Lipophilicity_AstraZeneca:
+  observed:
+    model.optimizer.lr: 0.001
+    model.predictor.decreasing: true
+    model.predictor.dropout: 0.75
+    model.predictor.hidden_dim: 512
+    model.predictor.layers: 2
+    model.scheduler.factor: 0.5

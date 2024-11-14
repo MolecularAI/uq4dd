@@ -1,0 +1,4 @@
+Lipophilicity_AstraZeneca:
+  model.predictor.n_estimators: 100 
+  model.predictor.min_samples_split: 2         
+  model.predictor.min_samples_leaf: 1

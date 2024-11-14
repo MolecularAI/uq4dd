@@ -1,0 +1,17 @@
+# Depricated! Need updating according to RF
+
+_target_: uq4dd.model.predictor.rf.RF
+n_estimators: ${model.n_predictors}
+criterion: 'reg:squarederror'
+
+colsample_bytree: 0.8
+learning_rate: 0.03
+max_depth: 19
+alpha: 5
+n_estimators: 855
+min_child_weight: 5
+
+oob_score: True
+verbose: 1 
+n_jobs: -1
+

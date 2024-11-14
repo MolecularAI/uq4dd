@@ -1,0 +1,19 @@
+
+early_stopping:
+  _target_: lightning.pytorch.callbacks.EarlyStopping
+  monitor: "valid/loss"
+  patience: 50
+  mode: "min"
+
+rich_progress_bar:
+  _target_: lightning.pytorch.callbacks.RichProgressBar
+
+model_checkpoint:
+  _target_: lightning.pytorch.callbacks.ModelCheckpoint
+  dirpath: ${paths.output_dir}/checkpoints
+  filename: "epoch_{epoch:03d}_{valid/loss:.2f}"
+  monitor: "valid/loss"   
+  mode: "min"
+  save_last: False
+  save_top_k: 1
+  auto_insert_metric_name: False

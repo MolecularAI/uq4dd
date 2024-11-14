@@ -1,0 +1,54 @@
+program: uq4dd/sweep.py
+project: UQ4DD_Sweeps
+name: base_mve
+method: grid
+metric:
+  goal: minimize
+  name: best_valid/loss
+parameters:
+  model.uncertainty: 
+    value: 'mve' 
+  model.recalibrate: 
+    value: 'none'
+  trainer.min_epochs: 
+    value: 1
+  trainer.max_epochs: 
+    value: 100
+  trainer.accelerator: 
+    value: 'gpu'
+  trainer.log_every_n_steps: 
+    value: 35
+  batch_size: 
+    value: 256
+  batch_size_eval: 
+    value: 256
+  db.censored: 
+    value: False
+  db.dataset: 
+    value: 'Lipophilicity_AstraZeneca'
+  db.objective: 
+    value: 'regression'
+  model.optimizer.lr:
+    values: [1e-3, 5e-4, 1e-4, 5e-5]
+  #model.optimizer.weight_decay: 
+  #  values: [5e-4, 1e-4, 5e-5, 0]
+  model.scheduler.factor: 
+    values: [0.1, 0.5]
+  #model.scheduler.patience: 
+  #  values: [10, 30, 50]
+  model.predictor.hidden_dim:
+    values: [64, 128, 256, 512]
+  model.predictor.layers: 
+    values: [2, 3, 4]
+  model.predictor.decreasing: 
+    values: [False, True]
+  model.predictor.dropout:
+    values: [0.25, 0.5, 0.75]
+  #db.descriptors.fpSize: 
+  #  values: [512, 1024, 2048]
+
+command:
+  - python
+  - ${program}
+  - ${args_no_hyphens}
+

@@ -1,0 +1,30 @@
+
+defaults: 
+  - _self_               
+  - hydra: default.yaml   # Ignore
+  - paths: default.yaml   # Ignore
+  - model: rf.yaml        # Model configs, specify with argument e.g. model=mlp or model=ensemble
+  - db: lipo.yaml         # Data configs, specify with argument e.g. db=lipo for regression or db=cyp3a4 for classification
+  - trainer: sklearn.yaml # Specify torch.yaml or sklearn trainer configs to match base estimator
+  - logger: null          # Specify with argument e.g. logger=emma
+  - callbacks: base.yaml  # Use base or default callbacks depending on if metrics should be computed automatically or not
+
+# Information
+name: ${db.dataset}_${now:%Y-%m-%d}_${now:%H-%M-%S}
+project: UQ4DD
+version: 0.0.1
+description: "Uncertainty quantification for drug discovery."
+
+# Training
+seed: null
+train: True             
+test: True              # Evaluate on test set, using best model weights achieved during training
+cv: False
+n_experiments: 10
+ckpt_path: null
+ckpt_metric: loss
+debug: False
+
+batch_size: -1          # Needs to be -1 for baselines and e.g. 64 for MLPs
+batch_size_eval: -1     # Needs to be -1 for baselines and e.g. 64 for MLPs
+n_train_batches: null   # Gets infered after the datamodule is created

@@ -1,0 +1,11 @@
+# enable color logging
+defaults:
+  - override hydra_logging: colorlog
+  - override job_logging: colorlog
+
+# output directory, generated dynamically on each run
+run:
+  dir: ${paths.log_dir}/${db.dataset}/runs/${name}
+sweep:
+  dir: ${paths.log_dir}/${db.dataset}/multiruns/${name}
+  subdir: ${hydra.job.num}

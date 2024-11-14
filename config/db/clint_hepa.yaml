@@ -1,0 +1,26 @@
+defaults: 
+  - descriptors: handcrafted.yaml
+
+_target_: uq4dd.datamodule.tdc.TDCDataModule
+data_dir: ${paths.data_dir}/tdc
+
+dataset: Clearance_Hepatocyte_AZ
+split: random
+seed: ${seed}
+
+objective: regression
+censored: False
+
+threshold: 6.0
+probabilistic_labels: False
+control_std: False
+std: 0.3
+
+batch_size: ${batch_size}            
+batch_size_eval: ${batch_size_eval}  
+num_workers: 4
+persistent_workers: True 
+pin_memory: True
+drop_last: False
+verbose: False
+

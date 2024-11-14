@@ -1,0 +1,15 @@
+
+defaults:
+  - _self_
+  - predictor: prf.yaml 
+
+_target_: uq4dd.model.baselines.BaselineDTI
+n_experiments: ${n_experiments}
+uncertainty: 'ensemble' 
+recalibrate: 'none'
+save_path: True
+ckpt_path: null
+
+drug_features: ${db.descriptors.fpSize}
+censored: ${db.censored}
+objective: ${db.objective}

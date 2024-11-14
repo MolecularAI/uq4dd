@@ -1,0 +1,13 @@
+wandb:
+  _target_: lightning.pytorch.loggers.wandb.WandbLogger
+  name: ${name}
+  save_dir: "${paths.output_dir}"
+  offline: False
+  id: null # pass correct id to resume experiment!
+  project: ${project}
+  group: ${db.dataset}
+  log_model: False # upload lightning ckpts
+  prefix: "" # a string to put at the beginning of metric keys
+  entity: null # IMPORTANT: pass the wandb username here
+  tags: []
+  job_type: ""
