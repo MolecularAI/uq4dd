@@ -6,8 +6,8 @@
 [![hydra](https://img.shields.io/badge/Config-Hydra_1.3-89b8cd)](https://hydra.cc/)
 [![wandb](https://img.shields.io/badge/Weights_%26_Biases-black?logo=weightsandbiases&logoColor=yellow)](https://wandb.ai/site)
 
-[![openreview](https://img.shields.io/badge/Workshop_Paper-OpenReview.net-%23b31b1b)](https://openreview.net/forum?id=5B8tsitI5s)
-[![arxiv](https://img.shields.io/badge/Preprint-arXiv:2409.04313-%23b31b1b)](https://arxiv.org/abs/2409.04313)
+[![Paper](https://img.shields.io/badge/Workshop_Paper-OpenReview.net-%23b31b1b)](https://www.sciencedirect.com/science/article/pii/S2667318525000042)
+[![arXiv](https://img.shields.io/badge/Preprint-arXiv:2409.04313-%23b31b1b)]([https://arxiv.org/abs/2409.04313](https://arxiv.org/abs/2502.03982))
 
 
 **[Installation](#installation)**
@@ -146,24 +146,30 @@ The software is licensed under the Apache 2.0 license (see [LICENSE](https://git
 
 Please cite our work using the following references.
 
-For application in classification,
-```bibtex
-@inproceedings{friesacher2024towards,
-    title={Towards Reliable Uncertainty Estimates for Drug Discovery: A Large-scale Temporal Study of Probability Calibration},
-    author={Hannah Rosa Friesacher and Emma Svensson and Adam Arany and Lewis Mervin and Ola Engkvist},
-    booktitle={ICML 2024 AI for Science Workshop},
-    year={2024},
-    url={https://openreview.net/forum?id=5B8tsitI5s}
-}
-```
-
 For application in regression,
 ```bibtex
 @article{svensson2024enhancing,
-    title={Enhancing Uncertainty Quantification in Drug Discovery with Censored Regression Labels},
+    title = {{Enhancing Uncertainty Quantification in Drug Discovery with Censored Regression Labels}},
     author={Svensson, Emma and Friesacher, Hannah Rosa and Winiwarter, Susanne and Mervin, Lewis and Arany, Adam and Engkvist, Ola},
-    journal={arXiv preprint arXiv:2409.04313},
-    year={2024}
+    journal = {Artificial Intelligence in the Life Sciences},
+    volume = {7},
+    pages = {100128},
+    year = {2025},
+    issn = {2667-3185},
+    doi = {https://doi.org/10.1016/j.ailsci.2025.100128},
+    url = {https://www.sciencedirect.com/science/article/pii/S2667318525000042},
+}
+```
+
+For application in classification,
+```bibtex
+@article{friesacher2024towards,
+    title={{Temporal Distribution Shift in Real-World Pharmaceutical Data: Implications for Uncertainty Quantification in QSAR Models}}, 
+    author={Friesacher, Hannah Rosa and Svensson, Emma and Winiwarter, Susanne and Mervin, Lewis and Arany, Adam and Engkvist, Ola},
+    year={2025},
+    eprint={2502.03982},
+    archivePrefix={arXiv},
+    url={https://arxiv.org/abs/2502.03982}, 
 }
 ```
 
