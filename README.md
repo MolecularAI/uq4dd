@@ -6,7 +6,7 @@
 [![hydra](https://img.shields.io/badge/Config-Hydra_1.3-89b8cd)](https://hydra.cc/)
 [![wandb](https://img.shields.io/badge/Weights_%26_Biases-black?logo=weightsandbiases&logoColor=yellow)](https://wandb.ai/site)
 
-[![Paper](https://img.shields.io/badge/Workshop_Paper-OpenReview.net-%23b31b1b)](https://www.sciencedirect.com/science/article/pii/S2667318525000042)
+[![Paper](https://img.shields.io/badge/Paper-Elsevier-%23b31b1b)](https://www.sciencedirect.com/science/article/pii/S2667318525000042)
 [![arXiv](https://img.shields.io/badge/Preprint-arXiv:2409.04313-%23b31b1b)]([https://arxiv.org/abs/2409.04313](https://arxiv.org/abs/2502.03982))
 
 
