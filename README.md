@@ -164,12 +164,15 @@ For application in regression,
 For application in classification,
 ```bibtex
 @article{friesacher2024towards,
-    title={{Temporal Distribution Shift in Real-World Pharmaceutical Data: Implications for Uncertainty Quantification in QSAR Models}}, 
-    author={Friesacher, Hannah Rosa and Svensson, Emma and Winiwarter, Susanne and Mervin, Lewis and Arany, Adam and Engkvist, Ola},
-    year={2025},
-    eprint={2502.03982},
-    archivePrefix={arXiv},
-    url={https://arxiv.org/abs/2502.03982}, 
+    title = {Temporal distribution shift in real-world pharmaceutical data: Implications for uncertainty quantification in QSAR models},
+    author = {Hannah Rosa Friesacher and Emma Svensson and Susanne Winiwarter and Lewis Mervin and Adam Arany and Ola Engkvist},
+    journal = {Artificial Intelligence in the Life Sciences},
+    volume = {8},
+    pages = {100132},
+    year = {2025},
+    issn = {2667-3185},
+    doi = {https://doi.org/10.1016/j.ailsci.2025.100132},
+    url = {https://www.sciencedirect.com/science/article/pii/S266731852500008X} 
 }
 ```
 
